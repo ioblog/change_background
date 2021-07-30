@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>背景色改变</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            font-family: "montserrat";
+        }
+        body{
+            background: #333;
+        }
+        .btn{
+            position: absolute;
+            top: 40px;
+            right: 40px;
+            color:white;
+            font-size: 36px;
+            cursor: pointer;
+            transition: 0.4s;
+        }
+        .btn:hover{
+            transform: rotate(90deg);
+        }
+        .box{
+            position: absolute;
+            top: -50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            background: #f1f1f1;
+            width:400px;
+            transition: 1s ;
+        }
+        .box-show{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            background: #f1f1f1;
+            width:400px;
+         }
+        .box h2{
+            background: #2c3e50;
+            padding: 20px;
+            font-size: 18px;
+            color: white;
+            text-transform: uppercase;
+        }
+        .box-c{
+            padding: 20px  40px;
+            overflow: hidden;
+        }
+        .txtb{
+            position: relative;
+            margin-bottom: 10px;
+        }
+        #hex{
+            width: 100%;
+            padding: 0 60px;
+            height: 40px;
+        }
+        .prev{
+            width: 50px;
+            height: 30px;
+            position: absolute;
+            top: 5px;
+            left:5px;
+        }
+        .apply{
+            float: right;
+            border: none;
+            background: #2c3e50;
+            text-transform: uppercase;
+            padding: 6px 30px;
+            color: white;
+            cursor: pointer;
+        }
+    </style>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
+    <script src="js/jquery.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            //显示和隐藏输入框
+            $(".btn").click(function () {
+                $(".box").toggleClass("box-show");
+            });
+            //输入颜色能够显示出颜色
+            $("#hex").keyup(function () {
+                $(".prev").css("background",$("#hex").val());
+            });
+            //改变body的背景色
+            $(".apply").click(function () {
+                $("body").css("background",$("#hex").val());
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="btn">
+        <i class="fas fa-cog"></i>
+    </div>
+    <div class="box">
+        <h2>输入颜色值</h2>
+        <div class="box-c">
+            <div class="txtb">
+                <input type="text" placeholder="#000000" id="hex">
+                <div class="prev"></div>
+            </div>
+            <button class="apply">应用</button>
+        </div>
+    </div>
+</body>
+</html>
